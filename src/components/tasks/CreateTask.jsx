@@ -4,28 +4,25 @@ import useTasks from '../../hooks/useTasks';
 import Button from '../ui/buttons';
 import Input from '../ui/input';
 
-const CreateTask = () => {
-  const id = useId();
-
-  const { createTask } = useTasks();
+const CreateTask = ({ create }) => {
   const [task, setTask] = React.useState({
     title: '',
     description: '',
     status: 'pending',
   });
 
-  const handleCreateTask = useCallback(() => {
-    console.log('create task');
+  const handleCreateTask = () => {
     // If title is empty, do not create task
     if (!task.title) {
       return;
     }
-    createTask({ task, id });
+    
+    create({ ...task, id: crypto.randomUUID() });
     setTask({
       title: '',
       description: '',
     });
-  }, []);
+  };
 
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
