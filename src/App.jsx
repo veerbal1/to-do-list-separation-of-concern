@@ -6,7 +6,8 @@ import H3 from './components/ui/typography/h3';
 import useTasks from './hooks/useTasks';
 
 function App() {
-  const { createTask, tasks, deleteTask } = useTasks();
+  const { createTask, tasks, deleteTask, toggleComplete } = useTasks();
+
   return (
     <div className="App">
       <Grid
@@ -21,8 +22,11 @@ function App() {
           <H3 title="Task Manager" align="center" />
         </Grid>
         <CreateTask create={createTask} />
-
-        <TaskList list={tasks} onDelete={deleteTask} />
+        <TaskList
+          list={tasks}
+          onDelete={deleteTask}
+          toggleComplete={toggleComplete}
+        />
       </Grid>
     </div>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 import useTasks from '../../hooks/useTasks';
 import Task from './Task';
 
-const TaskList = ({ list, onDelete }) => {
+const TaskList = ({ list, onDelete, toggleComplete }) => {
   return (
     <Grid item xs={12}>
       <List dense={true}>
@@ -15,6 +15,7 @@ const TaskList = ({ list, onDelete }) => {
             description={description}
             status={status}
             onDelete={onDelete}
+            toggleComplete={toggleComplete}
           />
         ))}
       </List>
