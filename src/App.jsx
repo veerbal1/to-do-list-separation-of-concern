@@ -3,8 +3,10 @@ import './App.css';
 import CreateTask from './components/tasks/CreateTask';
 import TaskList from './components/tasks/TaskList';
 import H3 from './components/ui/typography/h3';
+import useTasks from './hooks/useTasks';
 
 function App() {
+  const { createTask, tasks } = useTasks();
   return (
     <div className="App">
       <Grid
@@ -18,9 +20,10 @@ function App() {
         <Grid item xs={12}>
           <H3 title="Task Manager" align="center" />
         </Grid>
-        <CreateTask />
+        <CreateTask create={createTask} />
+
+        <TaskList list={tasks} />
       </Grid>
-      <TaskList />
     </div>
   );
 }
