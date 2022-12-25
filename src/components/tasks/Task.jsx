@@ -2,11 +2,17 @@ import React from 'react';
 import { IconButton, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const Task = ({ id, name, description, status }) => {
+const Task = ({ id, name, description, status, onDelete }) => {
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" aria-label="delete">
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={() => {
+            onDelete(id);
+          }}
+        >
           <DeleteIcon />
         </IconButton>
       }

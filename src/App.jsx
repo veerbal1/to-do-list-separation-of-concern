@@ -6,7 +6,7 @@ import H3 from './components/ui/typography/h3';
 import useTasks from './hooks/useTasks';
 
 function App() {
-  const { createTask, tasks } = useTasks();
+  const { createTask, tasks, deleteTask } = useTasks();
   return (
     <div className="App">
       <Grid
@@ -22,7 +22,7 @@ function App() {
         </Grid>
         <CreateTask create={createTask} />
 
-        <TaskList list={tasks} />
+        <TaskList list={tasks} onDelete={deleteTask} />
       </Grid>
     </div>
   );
