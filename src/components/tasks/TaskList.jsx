@@ -1,17 +1,22 @@
-import { List } from '@mui/material';
+import { Grid, List } from '@mui/material';
 import React from 'react';
 import useTasks from '../../hooks/useTasks';
 import Task from './Task';
 
-const TaskList = () => {
-  const { tasks } = useTasks();
-  console.log(tasks);
+const TaskList = ({ list }) => {
   return (
-    <List dense={true}>
-      {tasks.map(({ id, name, description, status }) => (
-        <Task key={id} name={name} description={description} status={status} />
-      ))}
-    </List>
+    <Grid item xs={12}>
+      <List dense={true}>
+        {list.map(({ id, title, description, status }) => (
+          <Task
+            key={id}
+            name={title}
+            description={description}
+            status={status}
+          />
+        ))}
+      </List>
+    </Grid>
   );
 };
 
