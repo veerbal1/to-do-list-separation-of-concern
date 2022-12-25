@@ -23,11 +23,26 @@ const useTasks = () => {
     );
   };
 
+  const toggleComplete = (id) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            status: task.status === 'complete' ? 'pending' : 'complete',
+          };
+        }
+        return task;
+      })
+    );
+  };
+
   return {
     tasks,
     createTask,
     updateTask,
     deleteTask,
+    toggleComplete,
   };
 };
 
